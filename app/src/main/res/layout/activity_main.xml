@@ -87,28 +87,11 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_above="@id/tableBottom"
         android:layout_below="@+id/tableHeader"
-        android:touchscreenBlocksFocus="true"
-        android:focusable="false"
-        android:focusableInTouchMode="false">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/scrollViewRL" >
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/divider"
-                android:layout_centerHorizontal="true"/>
-        </RelativeLayout>
-    </ScrollView>
-
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/tableBottom"
+        android:id="@+id/listView" />
 </RelativeLayout>
