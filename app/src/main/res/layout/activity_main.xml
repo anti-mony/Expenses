@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="commonantimony.expenses.MainActivity"
+    android:orientation="vertical"
+    android:focusable="false"
+    android:focusableInTouchMode="false">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/background_light"
+        android:layout_height="50dp"
+        android:id="@+id/tableHeader"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+
+        <TextView
+            android:text="Item"
+            android:layout_width="00dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            tools:text="Item"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/textView"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:background="#00838f" />
+
+        <TextView
+            android:text="Amount"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            tools:text="Amount"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:layout_width="00dp"
+            android:layout_weight="1"
+            android:background="#00838f"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bottombar"
+            android:layout_alignParentBottom="true"
+        android:id="@+id/tableBottom">
+
+        <TextView
+            android:text="Total :"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/totalTextView"
+            android:textSize="24sp"
+            android:clickable="false"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+        <TextView
+                android:gravity="center"
+                android:text="00"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:id="@+id/amountTextView"
+                android:textSize="24sp"
+            android:layout_alignTop="@+id/tableBottom"
+            android:layout_alignParentEnd="true"
+            android:textStyle="normal|italic"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_above="@id/tableBottom"
+        android:layout_below="@+id/tableHeader"
+        android:touchscreenBlocksFocus="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/scrollViewRL" >
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/divider"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
