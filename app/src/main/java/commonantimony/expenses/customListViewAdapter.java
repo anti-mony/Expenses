@@ -3,10 +3,10 @@ package commonantimony.expenses;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,18 +24,17 @@ import java.util.ArrayList;
 
 class customListViewAdapter extends ArrayAdapter<items> {
 
-    ArrayList<items> listX = new ArrayList<>();
-    TextView totalValue;
-    float total;
-    Context ctxt;
+    private ArrayList<items> listX = new ArrayList<>();
+    private TextView totalValue;
+    private float total;
+    private Context ctxt;
 
-    public customListViewAdapter(Context context, ArrayList L) {
+    customListViewAdapter(Context context, ArrayList<items> L) {
         super(context, R.layout.custom_listview, L);
         this.listX = L;
         ctxt = context;
     }
 
-    @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater lI = LayoutInflater.from(getContext());
@@ -60,12 +59,7 @@ class customListViewAdapter extends ArrayAdapter<items> {
 
             @Override
             public void afterTextChanged(Editable s) {
-                try {
-                    listX.get(position).name = name.getText().toString();
-                } catch (Exception E) {
-
-                }
-
+                listX.get(position).name = name.getText().toString();
             }
         });
 
@@ -73,7 +67,7 @@ class customListViewAdapter extends ArrayAdapter<items> {
         try {
             val.setText(String.valueOf(listX.get(position).val));
         } catch (Exception E) {
-
+            Log.v("TAG", "Empty EditText");
         }
         val.setBackgroundColor(Color.TRANSPARENT);
         val.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -94,16 +88,15 @@ class customListViewAdapter extends ArrayAdapter<items> {
                     listX.get(position).val = Float.valueOf(val.getText().toString());
                     total = addValues();
                     totalValue.setText(String.valueOf(total));
-                    //Toast.makeText(ctxt, "Total:"+total, Toast.LENGTH_SHORT).show()                    ;
                 } catch (Exception E) {
-
+                    Log.v("TAG", "Cannot convert to float / SUM failed");
                 }
             }
         });
 
         ImageView close = (ImageView) customView.findViewById(R.id.removeItem);
 
-        sNo.setText((position + 1) + ".");
+        sNo.setText(String.valueOf(position + 1));
         close.setImageResource(R.drawable.ic_delete_black_48dp);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,10 +111,9 @@ class customListViewAdapter extends ArrayAdapter<items> {
         return customView;
     }
 
-    float addValues() {
+    private float addValues() {
         float sum = 0;
-        int i = 0;
-        for (i = 0; i < listX.size(); i++) {
+        for (int i = 0; i < listX.size(); i++) {
             sum = sum + listX.get(i).val;
         }
 //        Log.v("TAG","SUM = "+sum);

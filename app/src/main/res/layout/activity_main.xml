@@ -30,7 +30,7 @@
             android:textColor="@android:color/white"
             android:id="@+id/textView"
             android:layout_marginBottom="4dp"
-            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:background="#00838f" />
 
@@ -46,7 +46,7 @@
             android:layout_weight="1"
             android:background="#00838f"
             android:layout_marginBottom="4dp"
-            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginTop="4dp" />
 
     </LinearLayout>
@@ -79,8 +79,6 @@
                 android:layout_height="match_parent"
                 android:id="@+id/amountTextView"
                 android:textSize="24sp"
-            android:layout_alignTop="@+id/tableBottom"
-            android:layout_alignParentEnd="true"
             android:textStyle="normal|italic"
             android:textAlignment="center" />
 

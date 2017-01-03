@@ -17,7 +17,7 @@ class items {
 
     items() {
         this.name = "Item";
-        this.val = 00;
+        this.val = 0;
     }
 }
 
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressWarnings("unchecked")
     public void addItem(MenuItem M) {
         list_count++;
         lI.add(new items());
