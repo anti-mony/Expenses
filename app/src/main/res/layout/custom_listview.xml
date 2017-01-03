@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:id="@+id/sNo"
         android:layout_weight="0.1"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_height="42dp" />
 
     <EditText
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/itemNameList"
         android:layout_weight="0.40"
         android:hint="Name"
         android:textAlignment="center" />
@@ -26,15 +26,14 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/itemValList"
         android:layout_weight="0.40"
         android:hint="Amount"
         android:textAlignment="center" />
 
     <ImageView
         android:layout_width="0dp"
-        android:id="@+id/imageView"
+        android:id="@+id/removeItem"
         android:layout_weight="0.1"
-        app:srcCompat="@android:drawable/btn_dialog"
-        android:layout_height="wrap_content" />
+        android:layout_height="42dp" />
 </LinearLayout>
