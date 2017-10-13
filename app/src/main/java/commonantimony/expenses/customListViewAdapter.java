@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.opengl.EGLDisplay;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -52,6 +53,11 @@ class customListViewAdapter extends ArrayAdapter<items> {
         name.setBackgroundColor(Color.TRANSPARENT);
         name.setInputType(InputType.TYPE_CLASS_TEXT);
         name.setHint("Item Name");
+        final ImageView qtyI = (ImageView)customView.findViewById(R.id.qtyInc);
+        qtyI.setImageResource(R.drawable.ic_add_black_48dp);
+        final ImageView qtyD = (ImageView)customView.findViewById(R.id.qtyDec);
+        qtyD.setImageResource(R.drawable.ic_remove_black_48dp);
+        final EditText qty = (EditText)customView.findViewById(R.id.itemValQty);
         name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

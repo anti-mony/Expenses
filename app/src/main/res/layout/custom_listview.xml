@@ -17,9 +17,31 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/itemNameList"
-        android:layout_weight="0.40"
+        android:layout_weight="0.30"
         android:hint="Name"
         android:textAlignment="center" />
+    <ImageView
+        android:layout_width="0dp"
+        android:id="@+id/qtyInc"
+        android:layout_weight="0.1"
+        android:layout_height="42dp"
+        android:contentDescription="Remove Item" />
+
+    <EditText
+        android:id="@+id/itemValQty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:ems="10"
+        android:hint="Qty"
+        android:inputType="number" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:id="@+id/qtyDec"
+        android:layout_weight="0.1"
+        android:layout_height="42dp"
+        android:contentDescription="Remove Item" />
 
     <EditText
         android:layout_width="0dp"
@@ -27,7 +49,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/itemValList"
-        android:layout_weight="0.40"
+        android:layout_weight="0.2"
         android:hint="Amount"
         android:textAlignment="center" />
 
