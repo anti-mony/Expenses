@@ -1,5 +1,6 @@
 package commonantimony.expenses;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -16,8 +17,6 @@ class items {
     float val;
 
     items() {
-        this.name = "Item";
-        this.val = 0;
     }
 }
 
@@ -26,17 +25,18 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<items> listItemsArray = new ArrayList<>();
     int list_count = 0;
-    ArrayAdapter lI;
+    customListViewAdapter lI;
+    MediaPlayer mP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lI = new customListViewAdapter(this, listItemsArray);
+        mP = lI.getmPlay();
         ListView lV = (ListView) findViewById(R.id.listView);
         lV.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
         lV.setAdapter(lI);
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,5 +51,15 @@ public class MainActivity extends AppCompatActivity {
         list_count++;
         lI.add(new items());
         lI.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mP != null){
+            mP.release();
+            mP = null;
+        }
+
     }
 }

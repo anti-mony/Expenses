@@ -3,6 +3,7 @@ package commonantimony.expenses;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -28,11 +29,16 @@ class customListViewAdapter extends ArrayAdapter<items> {
     private TextView totalValue;
     private float total;
     private Context ctxt;
+    MediaPlayer mPlay;
 
     customListViewAdapter(Context context, ArrayList<items> L) {
         super(context, R.layout.custom_listview, L);
         this.listX = L;
         ctxt = context;
+    }
+
+    public MediaPlayer getmPlay() {
+        return mPlay;
     }
 
     @Override
@@ -45,7 +51,7 @@ class customListViewAdapter extends ArrayAdapter<items> {
         name.setText(listX.get(position).name);
         name.setBackgroundColor(Color.TRANSPARENT);
         name.setInputType(InputType.TYPE_CLASS_TEXT);
-
+        name.setHint("Item Name");
         name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -64,6 +70,7 @@ class customListViewAdapter extends ArrayAdapter<items> {
         });
 
         final EditText val = (EditText) customView.findViewById(R.id.itemValList);
+        val.setHint("Price");
         try {
             val.setText(String.valueOf(listX.get(position).val));
         } catch (Exception E) {
@@ -105,6 +112,17 @@ class customListViewAdapter extends ArrayAdapter<items> {
                 notifyDataSetChanged();
                 total = addValues();
                 totalValue.setText(String.valueOf(total));
+//                mPlay = MediaPlayer.create(ctxt,R.raw.ringingbell);
+//                mPlay.start();
+//                mPlay.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                    @Override
+//                    public void onCompletion(MediaPlayer mp) {
+//                        if(mPlay != null){
+//                            mPlay.release();
+//                            mPlay = null;
+//                        }
+//                    }
+//                });
 
             }
         });
