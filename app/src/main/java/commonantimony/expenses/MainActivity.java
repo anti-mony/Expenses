@@ -15,7 +15,7 @@ import java.util.ArrayList;
 class items {
     String name;
     float val;
-
+    int qty;
     items() {
     }
 }

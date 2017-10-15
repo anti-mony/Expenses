@@ -53,11 +53,25 @@ class customListViewAdapter extends ArrayAdapter<items> {
         name.setBackgroundColor(Color.TRANSPARENT);
         name.setInputType(InputType.TYPE_CLASS_TEXT);
         name.setHint("Item Name");
-        final ImageView qtyI = (ImageView)customView.findViewById(R.id.qtyInc);
-        qtyI.setImageResource(R.drawable.ic_add_black_48dp);
-        final ImageView qtyD = (ImageView)customView.findViewById(R.id.qtyDec);
-        qtyD.setImageResource(R.drawable.ic_remove_black_48dp);
         final EditText qty = (EditText)customView.findViewById(R.id.itemValQty);
+        qty.setText("1");
+        final ImageView qtyI = (ImageView)customView.findViewById(R.id.qtyInc);
+        qtyI.setImageResource(R.drawable.ic_keyboard_arrow_up_black_48dp);
+        qtyI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qty.setText(String.valueOf(Integer.parseInt(qty.getText().toString())+1));
+            }
+        });
+        final ImageView qtyD = (ImageView)customView.findViewById(R.id.qtyDec);
+        qtyD.setImageResource(R.drawable.ic_keyboard_arrow_down_black_48dp);
+        qtyD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Integer.parseInt(qty.getText().toString())>=1)
+                    qty.setText(String.valueOf(Integer.parseInt(qty.getText().toString())-1));
+            }
+        });
         name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -99,11 +113,31 @@ class customListViewAdapter extends ArrayAdapter<items> {
             public void afterTextChanged(Editable s) {
                 try {
                     listX.get(position).val = Float.valueOf(val.getText().toString());
+                    //listX.get(position).qty = Integer.parseInt(qty.getText().toString());
                     total = addValues();
                     totalValue.setText(String.valueOf(total));
                 } catch (Exception E) {
                     Log.v("TAG", "Cannot convert to float / SUM failed");
                 }
+            }
+        });
+
+        qty.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                listX.get(position).qty = Integer.parseInt(qty.getText().toString());
+                total = addValues();
+                totalValue.setText(String.valueOf(total));
             }
         });
 
@@ -138,7 +172,7 @@ class customListViewAdapter extends ArrayAdapter<items> {
     private float addValues() {
         float sum = 0;
         for (int i = 0; i < listX.size(); i++) {
-            sum = sum + listX.get(i).val;
+            sum = sum + listX.get(i).val*listX.get(i).qty;
         }
 //        Log.v("TAG","SUM = "+sum);
         return sum;
