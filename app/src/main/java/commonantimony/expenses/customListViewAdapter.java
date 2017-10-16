@@ -3,8 +3,8 @@ package commonantimony.expenses;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.opengl.EGLDisplay;
+//import android.media.MediaPlayer;
+import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -30,7 +30,7 @@ class customListViewAdapter extends ArrayAdapter<items> {
     private TextView totalValue;
     private float total;
     private Context ctxt;
-    MediaPlayer mPlay;
+//    private MediaPlayer mPlay;
 
     customListViewAdapter(Context context, ArrayList<items> L) {
         super(context, R.layout.custom_listview, L);
@@ -38,12 +38,13 @@ class customListViewAdapter extends ArrayAdapter<items> {
         ctxt = context;
     }
 
-    public MediaPlayer getmPlay() {
-        return mPlay;
-    }
+//    @Override
+//    public MediaPlayer getmPlay() {
+//        return mPlay;
+//    }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         LayoutInflater lI = LayoutInflater.from(getContext());
         View customView = lI.inflate(R.layout.custom_listview, parent, false);
         totalValue = (TextView) ((Activity) ctxt).findViewById(R.id.amountTextView);
